@@ -13,3 +13,7 @@ document.getElementById('cadastrarCliente')
 
 document.getElementById('modalClose')
     .addEventListener('click', closeModal)
+
+
+
+    //testando commit com pelo metodo diferente
