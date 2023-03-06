@@ -59,12 +59,39 @@ const saveClient =()=>{
             cidade: document.getElementById('cidade').value
         }
         createClient(client)
+        updateTable()
         closeModal()
     }
 }
 
+// Inserindo a infos dos clinetes na tabela
+const createRow = (client)=>{
+    const newRow = document.createElement('tr')
+    newRow.innerHTML = `
+    <td>${client.nome}</td>
+    <td>${client.email}</td>
+    <td>${client.celular}</td>
+    <td>${client.cidade}</td>
+    <td>
+        <button type="button" class="button green">Editar</button>
+        <button type="button" class="button red">Excluir</button>
+    </td> 
+    `
+    document.querySelector('#tableClient>tbody').appendChild(newRow)
+}
 
+const clearTable = ()=>{
+    const rows = document.querySelectorAll('#tableClient>tbody tr')
+    rows.forEach(row => row.parentNode.removeChild(row))
+}
 
+const updateTable = ()=>{
+    const dbClient = readClient()
+    clearTable()
+    dbClient.forEach(createRow)
+} 
+
+updateTable()
 /*Eventos 
 ==============*/
 
